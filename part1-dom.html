@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vanilla DOM Manipulation Exercises</title>
+    <style media="screen">
+        :root {
+         --color1 : #ee6055;
+         --color2 : #60d394;
+         --color3 : #aaf683;
+         --color4 : #ffd97d;
+         --color5 : #ff9b85;
+
+         --darkcolor1 : black;
+         --darkcolor2 : darkslategray;
+         --darkcolor3 : darkgreen;
+         --darkcolor4 : darkgoldenrod;
+         --darkcolor5 : darkred;
+         --darkcolor6 : darkmagenta;
+        }
+
+        label {
+            display : block;
+            font-weight : bold;
+        }
+
+        #controls {
+            background : #eee;
+            margin : 2em;
+            padding : 2em;
+        }
+
+        #controls fieldset {
+            background : white;
+            margin : 1em;
+            padding : 1em;
+        }
+
+        h1 {
+            text-align : center;
+        }
+
+        #p1 {
+            color : slategray;
+            font-size : 3rem;
+        }
+
+        .fancy {
+            animation-name: backgroundColorPalette;
+            animation-duration: 10s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+
+        .shmancy {
+            text-shadow: 4px 4px 6px rgba(0, 0, 0, 3);
+            background-color: #eaca7f;  
+            text-align: center;
+            font-family:'Times New Roman', Times, serif;
+                  
+        }
+
+        @keyframes backgroundColorPalette {
+            0% {background: var(--color1);}
+            25% {background: #60d394;}
+            50% {background: #aaf683;}
+            75% {background: #ffd97d;}
+            100% {background: #ff9b85;}
+        }
+
+        #output {
+            display:block;
+        }
+
+        .card {
+            border: 1px solid var(--color1);
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            color: var(--darkcolor2);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-image {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .card-text {
+            color: var(--darkcolor4);
+        }
+
+        .card-link {
+            display: inline-block;
+            background-color: var(--color3);
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 2px;
+        }
+
+        .card-link:hover {
+            background-color: var(--color4);
+        }
+    </style>
+</head>
+<body>
+<!-- start of HTML demo -->
+<h1 id="h1">Vanilla DOM Manipulation</h1>
+<p id="p1">This is a <em>test</em> of the DOM</p>
+
+<section id="controls">
+<h2>Demos</h2>
+<form>
+    <fieldset>
+        <legend>Traversal</legend>
+        <label for="walkBtn">Basic Traversal</label>
+        <input type="button" id="walkBtn" value="Walk"><br>
+        <textarea id="basicTextArea" name="textarea" rows="20" cols="40"></textarea>
+        
+        <label for="advancedWalkBtn">Advanced Walk</label>
+        <input type="button" id="advancedWalkBtn" value="Advanced Walk"><br>
+        <textarea id="advancedTextArea" name="textarea" rows="20" cols="40"></textarea>
+    </fieldset>
+
+    <fieldset>
+        <legend>Modify</legend>
+        <label for="modifyBtn">Simple Modification</label>
+        <input type="button" id="modifyBtn" value="Modify">
+
+        <input type="button" id="advancedModifyBtn" value="Advanced Modify">
+    </fieldset>
+
+    <fieldset>
+        <legend>Add</legend>
+        <label for="addBtn">Basic Addition</label>
+        <input type="button" id="addBtn" value="Add">
+
+        <label for="addNewElement">Select Element Type</label>
+        <select id="addNewElement">
+            <option value="textNode">Text Node</option>
+            <option value="comment">Comment</option>
+            <option value="element">Element</option>
+        </select>
+
+        <input type="text" id="newElementContent" placeholder="Element Content">
+        <input type="button" id="addNewElementBtn" value="Add Element">
+        <output id="output"></output>
+    </fieldset>
+
+    <fieldset>
+        <legend>Remove</legend>
+        <label for="removeBtn">Simple Delete</label>
+        <input type="button" id="removeBtn" value="Remove">
+        
+        <label for="safeDeleteBtn">Safe Delete</label>
+        <input type="button" id="safeDeleteBtn" value="Safe Delete" onclick="safeDelete()">
+        
+        <label for="selectorInput">CSS Selector</label>
+        <input type="text" id="selectorInput" placeholder="Type CSS selector">
+        <input type="button" id="deleteBySelectorBtn" value="Delete by Selector" onclick="deleteBySelector()">
+    </fieldset>
+
+    <fieldset>
+        <legend>Clone</legend>
+        <label for="basicCloneBtn">Basic Clone</label>
+        <input type="button" id="basicCloneBtn" value="Basic Clone">
+
+        <input type="button" id="advancedCloneBtn" value="Advanced Clone">
+    </fieldset>
+</form>
+
+<template id="cardTemplate">
+    <div class="card">
+        <h3 class="card-title">Card Title</h3>
+        <img class="card-image" src="Images/neom-ihIKOg_lHgI-unsplash.jpg" alt="Card Image">
+        <p class="card-text">Text Content.</p>
+        <a class="card-link" href="#">Read More</a>
+    </div>
+</template>
+
+</section>
+
+<hr>
+<h2>Look out below these will get deleted if you press the buttons above!</h2>
+<p>I am scared of being deleted!</p>
+<p>Me too. Oh noes, here comes the <code>removeChild()</code> method, it's going to delete us!</p>
+
+<!-- put all your new code in this dom.js file -->
+<script src="dom.js"></script>
+</body>
+</html>
